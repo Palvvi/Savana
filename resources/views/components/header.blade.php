@@ -106,7 +106,9 @@
                                     <li><a href="{{ URL::to('/about')}}">About Us</a></li>
                                     <li><a href={{ url('/singleproduct') }}>Shop Details</a></li>
                                     <li><a href={{ url('/cart') }}>Shopping Cart</a></li>
-                                     <li><a href={{ url('/profile') }}>Account</a></li>
+                                    <li><a href={{ url('/profile') }}>My Account</a></li>
+                                    <li><a href={{ url('/orders') }}>My Orders</a></li>
+
                                     {{-- <li><a href={{ url('/') }}>Log In</a></li>  --}}
                                 </ul>
                             </li>

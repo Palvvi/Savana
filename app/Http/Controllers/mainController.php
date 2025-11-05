@@ -88,19 +88,40 @@ class mainController extends Controller
        return view('blog');
    }
    public function profile() {
-    if(session()->has('id'))
-    {
-        $user=user::find(session()->get('id'));
-        return view('profile',compact('user'));
-    }
-       return view('profile');
+        if(session()->has('id'))
+        {
+            $user=user::find(session()->get('id'));
+            return view('profile',compact('user'));
+        }
+        else
+        {
+            return redirect('login')->with('error','Kindly Login to access profile');
+        }
+        return view('profile');
    }
-   
+   public function orders() {
+        if(session()->has('id'))
+        {
+            $order=Order::where('user_id',session()->get('id'))->get();
+            $items=DB::table('products')
+            ->join('orderitems','orderitems.product_id','products.id')
+            ->select('products.title','products.picture','orderitems.*')
+            ->get();
+
+           
+            return view('order',compact('order','items'));
+        }
+        else
+        {
+            return redirect('login')->with('error','Kindly Login to access profile');
+        }
+        return view('profile');
+   }
    
     public function singleproduct($id) {
         $product=Product::find($id);
-       return view('single-product',compact('product'));
-   }
+        return view('single-product',compact('product'));
+    }
     public function cart() {
         $cartItem=DB::table('products')
         ->join('carts',"carts.product_id","products.id")

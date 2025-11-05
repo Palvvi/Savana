@@ -22,6 +22,7 @@ Route::controller(mainController::class)->group(function () {
     Route::get('/shop', 'shop');
     Route::get('/about', 'about');
     Route::get('/register', 'register');
+    Route::get('/orders', 'orders');
     Route::get('/login', 'login');
     Route::get('/checkout', 'checkout');
     Route::get('/deletefromcart/{id}', 'deleteFromCart');
@@ -31,5 +32,7 @@ Route::controller(mainController::class)->group(function () {
     Route::post('/addToCart', 'addtocart');
     Route::post('/updatecart', 'updatecart');
     Route::get('/profile', 'profile');
-    Route::get('/updateUser', 'updateUser');
+  
 });
+    Route::post('/updateUser', [mainController::class, 'updateUser']);
+
