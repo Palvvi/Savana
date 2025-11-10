@@ -32,6 +32,7 @@ Route::controller(mainController::class)->group(function () {
     Route::post('/addToCart', 'addtocart');
     Route::post('/updatecart', 'updatecart');
     Route::get('/profile', 'profile');
+    Route::get('/testmail', 'testmail');
   
 });
     Route::post('/updateUser', [mainController::class, 'updateUser']);

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Mail\testing;
 use Illuminate\Support\Facades\DB;
 use App\Models\user;
 use App\Models\product;
@@ -8,6 +10,7 @@ use App\Models\Cart;
 use App\Models\order;
 use App\Models\orderitem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class mainController extends Controller
 {
@@ -98,6 +101,13 @@ class mainController extends Controller
             return redirect('login')->with('error','Kindly Login to access profile');
         }
         return view('profile');
+   }
+   public function testmail()
+   {
+    $details=['title'=>'This is testing mail from Savana E-commerce website',
+    'body'=>'This mail is sent for testing purpose only.'];
+    Mail::to('palviatkle@gmail.com')->send(new testing($details));
+    return redirect("/")->with('success','Test mail sent successfully');
    }
    public function orders() {
         if(session()->has('id'))
